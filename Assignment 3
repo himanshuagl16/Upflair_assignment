@@ -1,0 +1,108 @@
+ANSWER 1
+merge_lists = lambda keys, values:{keys[i]: values[i] for i in range(len(keys))}
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+result = merge_lists(keys, values)
+print(result)  
+
+ANSWER 2
+class Product:
+    discount_rate = 0.1 
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+    def discounted_price(self):
+        return self.price * (1 - Product.discount_rate)
+p = Product("Laptop", 1000)
+print(p.discounted_price()) 
+
+ANSWER 3
+import math
+class Shape:
+    def area(self):
+        pass 
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    def area(self):
+        print("Area of Circle: ", math.pi * self.radius * self.radius)
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    def area(self):
+        print("Area of Rectangle: ", self.width * self.height)
+        
+c = Circle(5)
+r = Rectangle(4, 6)
+c.area()  
+r.area()  
+
+ANSWER 4
+class Person:
+    def __init__(self, name, age): 
+        self.name = name
+        self.age = age
+class Employee:
+    def __init__(self, salary): 
+        self.salary = salary
+class Manager(Person, Employee):
+    def __init__(self, name, age, salary, department):
+        Person.__init__(self, name, age)
+        Employee.__init__(self, salary)
+        self.department = department
+    def details(self):
+        return f"{self.name}, {self.age}, {self.salary}, {self.department}"
+m = Manager("Hardik", 35, 75000, "HR")
+print(m.details()) 
+
+ANSWER 5
+class Animal:
+    def make_sound(self):
+        pass  
+
+class Dog:
+    def make_sound(self):
+        print("Woof! Woof!")
+
+class Cat:
+    def make_sound(self):
+        print("Meow! Meow!")
+
+class Cow:
+    def make_sound(self):
+        print("Moo! Moo!")
+        
+def play_sound(animal):
+    animal.make_sound()
+
+dog = Dog()
+cat = Cat()
+cow = Cow()
+
+play_sound(dog)  
+play_sound(cat)  
+play_sound(cow) 
+
+ANSWER 6
+class Vehicle:
+    def __init__(self, brand, model, rent_per_day):
+        self.brand, self.model, self.rent_per_day = brand, model, rent_per_day
+    def get_details(self):
+        return f"{self.brand} {self.model}, Rent: ${self.rent_per_day}/day"
+class Car(Vehicle):
+    def __init__(self, brand, model, rent_per_day, seats):
+        super().__init__(brand, model, rent_per_day)
+        self.seats = seats
+    def get_details(self):
+        return super().get_details() + f", Seats: {self.seats}"
+class Bike(Vehicle):
+    def __init__(self, brand, model, rent_per_day, type_):
+        super().__init__(brand, model, rent_per_day)
+        self.type_ = type_
+    def get_details(self):
+        return super().get_details() + f", Type: {self.type_}"
+car = Car("Toyota", "Camry", 50, 5)
+bike = Bike("Yamaha", "MT-15", 20, "Sport")
+print(car.get_details())  
+print(bike.get_details())
